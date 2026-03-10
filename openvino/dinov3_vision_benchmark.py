@@ -52,7 +52,7 @@ def main():
                     if tp == 'torch' :
                         model = load_hf_model(args.model_path, model_name)
                     elif tp == 'ov' :
-                        model = load_ov_base_model(f'{args.model_path}_ov', model_name)
+                        model = load_ov_base_model(f'{args.model_path}_ov/{model_name}', model_name)
                     else :
                         model = None
                 except Exception as e:

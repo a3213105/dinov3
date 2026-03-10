@@ -56,7 +56,7 @@ def do_classification(tp, model_path, model_name, model, pixel_values, pool: str
         classification_fn = classification
     idxs = classification_fn(model, pixel_values, pool, topk)
     # print(f"[INFO] Image Classification with TOP-{topk}: {idxs.tolist()}")
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
             classification_fn(model, pixel_values, pool, topk)
