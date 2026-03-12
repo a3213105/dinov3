@@ -64,11 +64,7 @@ def do_segmentation(tp, model_path, model_name, model, pixel_values, kmeans, k, 
     segmentation_postprocess(labels, H, W, gh, gw, outputname)
     if loop > 1:
         start = time.perf_counter()
-        if tp == 'ov_all' :
-            for _ in range(loop):
-                model(pixel_values)
-        else :
-            for _ in range(loop):
-                segmentation(model, pixel_values, kmeans, true_N)
+        for _ in range(loop):
+            segmentation(model, pixel_values, kmeans, true_N)
         duration = time.perf_counter() - start
         print(f"[INFO] Segmentation {tp} inference {model_name} loop={loop} times, average time: {duration/loop:.4f} seconds, {loop/duration:.3f} FPS")

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-from PIL import Image
+from sklearnex import patch_sklearn
+patch_sklearn()
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
+
+from PIL import Image
+
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))  # 视你的层级调整
@@ -57,6 +60,7 @@ def main():
                         model = None
                 except Exception as e:
                     print(f"### Failed to load model {model_name} for {tp}: {e}")
+                    continue
                     
                 if args.tasks is None or "segmentation" in args.tasks:
                     do_segmentation(tp, args.model_path, model_name, model, pixel_values, kmeans_seg, args.k, segment_path, loop=args.loop)
