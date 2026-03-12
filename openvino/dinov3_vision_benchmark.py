@@ -60,7 +60,11 @@ def main():
                         model = None
                 except Exception as e:
                     print(f"### Failed to load model {model_name} for {tp}: {e}")
-                    model = None
+                    if tp == 'torch' :
+                        continue
+                    else :
+                        model = None
+                        print(f"### Try to Convert model {model_name} to {tp} for benchmark...")
                     
                 if args.tasks is None or "segmentation" in args.tasks:
                     do_segmentation(tp, args.model_path, model_name, model, pixel_values, kmeans_seg, args.k, segment_path, loop=args.loop)
