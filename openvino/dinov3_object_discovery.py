@@ -123,7 +123,7 @@ def do_object_discovery(tp, model_path, model_name, model, pixel_values, kmeans,
 
     mask_bin = object_discovery_pipeline(model, kmeans, pixel_values, patch_size, object_discovery_fn)
     object_discovery_postprocess(mask_bin, img, H, W, mask_path, overlay_path)
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
             object_discovery_pipeline(model, kmeans, pixel_values, patch_size, object_discovery_fn)

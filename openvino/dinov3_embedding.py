@@ -44,7 +44,7 @@ def do_embedding(tp, model_path, model_name, model, pixel_values, loop) -> np.nd
 
     feats = embedding_fn(model, pixel_values)
     # print(f"[INFO] Image embedding vector size: {feats.shape[1]}")
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
             embedding_fn(model, pixel_values)

@@ -62,7 +62,7 @@ def do_segmentation(tp, model_path, model_name, model, pixel_values, kmeans, k, 
     true_N = gh * gw
     labels = segmentation(model, pixel_values, kmeans, true_N)
     segmentation_postprocess(labels, H, W, gh, gw, outputname)
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
             segmentation(model, pixel_values, kmeans, true_N)

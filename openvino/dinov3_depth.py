@@ -95,7 +95,7 @@ def do_depth_pca(tp, model_path, model_name, model, pixel_values, pca, depth_pat
     depth_small = depth_pca_pipeline(model, pixel_values, pca, depth_fn)
     _, _, H, W = pixel_values.shape
     depth_postprocess(depth_small, H, W, depth_path, color_path)
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
             depth_pca_pipeline(model, pixel_values, pca, depth_fn)
@@ -116,7 +116,7 @@ def do_depth_head(tp, model_path, model_name, model, pixel_values, head, depth_p
     depth_small = depth_head_pipeline(model, pixel_values, head, depth_fn)
     _, _, H, W = pixel_values.shape
     depth_postprocess(depth_small, H, W, depth_path, color_path)
-    if loop > 1:
+    if loop > 0:
         start = time.perf_counter()
         for _ in range(loop):
            depth_head_pipeline(model, pixel_values, head, depth_fn)
