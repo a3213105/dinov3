@@ -133,7 +133,7 @@ def parser_args() :
     ap = argparse.ArgumentParser()
     ap.add_argument("--image", default="../../000000039769.jpg", help="Input image path")
     ap.add_argument("--k", type=int, default=5, help="Number of clusters")
-    ap.add_argument("--show", action="store_true", help="Show visualization")
+    # ap.add_argument("--show", action="store_true", help="Show visualization")
     ap.add_argument("--output", type=str, default="../../outputs/", help="Output directory")
     ap.add_argument("--model_path", type=str, default="../../models")
     ap.add_argument("--loop", type=int, default=1, help="benchmark loop times")
